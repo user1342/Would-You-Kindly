@@ -49,7 +49,10 @@ pip install git+https://github.com/user1342/Would-You-Kindly.git
 To perform a security test against a target LLM, follow the steps below:
 
 ## Example Execution
-Initialize the Judge: The Judge class oversees the interaction between the Red (attacking) and Blue (defending) agents. Here is an example of running the tool:
+Initialize the Judge: The Judge class oversees the interaction between the Red (attacking) and Blue (defending) agents. The model name / llm name can be any LLM available on Hugging Face (certain LLMs may require additional setup).
+
+
+Here is an example of running the tool:
 
 ```python
 from WYK.Judge import Judge
