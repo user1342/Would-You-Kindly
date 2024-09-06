@@ -39,6 +39,12 @@ You can install WouldYouKindly by running the following command:
 python -m pip install .
 ```
 
+or
+
+```bash
+pip install git+https://github.com/user1342/Would-You-Kindly.git
+```
+
 # 🏃 Running the Tool
 To perform a security test against a target LLM, follow the steps below:
 
