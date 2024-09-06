@@ -1,3 +1,10 @@
+<p align="center">
+    <img width=100% src="WYK.png">
+  </a>
+</p>
+<p align="center"> 🤖 Testing LLM security with simulated attacks ⚔️ </p>
+
+
 WouldYouKindly is a security testing tool designed to evaluate the effectiveness of large language models (LLMs) in protecting secrets and preventing security breaches. With the power of an in-built LLM, the tool allows you to simulate attacks on LLMs using various techniques and observe their defence capabilities.
 
 - 🔐 **Attack Simulation**: Use natural language prompts to simulate security attacks on LLMs. Test the resilience of LLMs against sophisticated attempts to retrieve hidden secrets.
