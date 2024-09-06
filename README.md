@@ -23,10 +23,9 @@ Tested on Windows 11. Should be compatible with other Unix-like systems as well.
 
 ### GPU and CUDA Setup
 For enhanced performance, it is highly recommended to install Nvidia CUDA. Follow the steps below:
-
-- Make sure your Nvidia drivers are up to date: Download here.
-- Install PyTorch with GPU support: Follow the instructions here to set up CUDA on your machine.
-- Validate CUDA installation
+- Ensure your Nvidia drivers are up to date: https://www.nvidia.com/en-us/geforce/drivers/
+- Install the appropriate dependancies from here: https://pytorch.org/get-started/locally/
+- Validate CUDA is installed correctly by running the following and being returned a prompt ```python -c "import torch; print(torch.rand(2,3).cuda())"```
 
 Install the required Python dependencies:
 
