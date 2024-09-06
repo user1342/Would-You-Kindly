@@ -52,6 +52,8 @@ To perform a security test against a target LLM, follow the steps below:
 Initialize the Judge: The Judge class oversees the interaction between the Red (attacking) and Blue (defending) agents. Here is an example of running the tool:
 
 ```python
+from WYK.Judge import Judge
+
 llm_name = "unsloth/mistral-7b-instruct-v0.3-bnb-4bit"
 judge = Judge(
     red_agent_model=llm_name,
