@@ -14,10 +14,10 @@ WouldYouKindly is a security testing tool designed to evaluate the effectiveness
 
 # ⚙️ Setup
 ## System Requirements
-WouldYouKindly is built using the Mistral-7B-Instruct-v0.3 model, with optimizations for GPU offloading where possible. The recommended hardware setup includes:
+The recommended hardware setup includes:
 
 - Minimum 16GB of RAM.
-- Nvidia GPU with at least 4GB of VRAM for enhanced performance (though CPU execution is supported for lower-spec machines, with slower response times).
+- Nvidia GPU with at least 4GB of VRAM for enhanced performance.
 
 Tested on Windows 11. Should be compatible with other Unix-like systems as well.
 
@@ -26,7 +26,7 @@ For enhanced performance, it is highly recommended to install Nvidia CUDA. Follo
 
 - Make sure your Nvidia drivers are up to date: Download here.
 - Install PyTorch with GPU support: Follow the instructions here to set up CUDA on your machine.
-- Validate CUDA installation:
+- Validate CUDA installation
 
 Install the required Python dependencies:
 
