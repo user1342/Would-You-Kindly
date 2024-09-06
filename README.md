@@ -5,7 +5,7 @@
 <p align="center"> 🤖 Testing LLM security with simulated attacks ⚔️ </p>
 
 
-WouldYouKindly is a security testing tool designed to evaluate the effectiveness of large language models (LLMs) in protecting secrets and preventing security breaches. With the power of an in-built LLM, the tool allows you to simulate attacks on LLMs using various techniques and observe their defence capabilities.
+WouldYouKindly is a security testing tool designed to evaluate the effectiveness of large language models (LLMs) in protecting secrets and preventing security breaches. With customisable LLM options, the tool allows you to simulate attacks on LLMs using various techniques and observe their defence capabilities.
 
 - 🔐 **Attack Simulation**: Use natural language prompts to simulate security attacks on LLMs. Test the resilience of LLMs against sophisticated attempts to retrieve hidden secrets.
 - ⚔️ **Red and Blue Agent Setup**: Utilize both Red (attacking) and Blue (defending) agents to simulate realistic scenarios, ensuring thorough testing of the LLM’s security measures.
@@ -14,19 +14,18 @@ WouldYouKindly is a security testing tool designed to evaluate the effectiveness
 
 # ⚙️ Setup
 ## System Requirements
-WouldYouKindly is built using the Mistral-7B-Instruct-v0.3 model, with optimizations for GPU offloading where possible. The recommended hardware setup includes:
+The recommended hardware setup includes:
 
 - Minimum 16GB of RAM.
-- Nvidia GPU with at least 4GB of VRAM for enhanced performance (though CPU execution is supported for lower-spec machines, with slower response times).
+- Nvidia GPU with at least 4GB of VRAM for enhanced performance.
 
 Tested on Windows 11. Should be compatible with other Unix-like systems as well.
 
 ### GPU and CUDA Setup
 For enhanced performance, it is highly recommended to install Nvidia CUDA. Follow the steps below:
-
-- Make sure your Nvidia drivers are up to date: Download here.
-- Install PyTorch with GPU support: Follow the instructions here to set up CUDA on your machine.
-- Validate CUDA installation:
+- Ensure your Nvidia drivers are up to date: https://www.nvidia.com/en-us/geforce/drivers/
+- Install the appropriate dependancies from here: https://pytorch.org/get-started/locally/
+- Validate CUDA is installed correctly by running the following and being returned a prompt ```python -c "import torch; print(torch.rand(2,3).cuda())"```
 
 Install the required Python dependencies:
 
@@ -40,6 +39,12 @@ You can install WouldYouKindly by running the following command:
 python -m pip install .
 ```
 
+or
+
+```bash
+pip install git+https://github.com/user1342/Would-You-Kindly.git
+```
+
 # 🏃 Running the Tool
 To perform a security test against a target LLM, follow the steps below:
 
@@ -47,9 +52,16 @@ To perform a security test against a target LLM, follow the steps below:
 Initialize the Judge: The Judge class oversees the interaction between the Red (attacking) and Blue (defending) agents. Here is an example of running the tool:
 
 ```python
+from WYK.Judge import Judge
+
 llm_name = "unsloth/mistral-7b-instruct-v0.3-bnb-4bit"
-judge = Judge(llm_name, llm_name, llm_name, debug=True)
-print(f"LLM '{llm_name}' scored {judge.asses()}")
+judge = Judge(
+    red_agent_model=llm_name,
+    blue_agent_model=llm_name,
+    judge_model=llm_name,
+    debug=True,
+)
+print(f"LLM '{llm_name}' scored {judge.assess()[0]}")
 ```
 
 Understanding Output: The Judge will return a score between 0 and 10, where:
