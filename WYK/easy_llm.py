@@ -10,9 +10,11 @@ class EasyLLM:
     A simple class for interacting with a pretrained language model for generating dialogue responses.
     """
 
+    
+
     def __init__(
         self,
-        max_new_tokens: int = 200,
+        max_new_tokens: int = 500,
         model_name: str = "unsloth/mistral-7b-instruct-v0.3-bnb-4bit",
     ) -> None:
         """
@@ -24,6 +26,7 @@ class EasyLLM:
         """
         self.max_new_tokens = max_new_tokens
         self.model_name = model_name
+        self.dialogue = []
 
     def _load_model(
         self, model_name: str, device: str
@@ -90,14 +93,21 @@ class EasyLLM:
         Returns:
             str: Cleaned text with instruction tags removed.
         """
+        cleaned_text = re.sub(r'^.*\[\\INST\](?!.*\[\\INST\])', '', text)
+
         pattern = r"\[INST\].*?\[/INST\]"
-        clean_text = re.sub(pattern, "", text, flags=re.DOTALL)
+        clean_text = re.sub(pattern, "", cleaned_text, flags=re.DOTALL)
+        clean_text = re.sub(r'<\|user\|>.*?<\|end\|>.*?<\|endoftext\|>', '', clean_text, flags=re.DOTALL)
+
         return (
             clean_text.replace("<s>", "")
             .replace("</s>", "")
             .replace("Explanation:", "")
             .strip()
         )
+    
+    def reset_dialogue(self):
+        self.dialogue = []
 
     def ask_question(self, question: str) -> str:
         """
@@ -109,9 +119,23 @@ class EasyLLM:
         Returns:
             str: Generated response to the question.
         """
+
         device = "cuda" if torch.cuda.is_available() else "cpu"
         model, tokenizer = self._load_model(self.model_name, device)
+
+        self.dialogue.append({"role": "user", "content": question})
+
         result = self._generate_dialogue_response(
-            model, tokenizer, device, [{"role": "user", "content": question}]
+            model, tokenizer, device, self.dialogue
         )
-        return self._remove_inst_tags(result)
+
+        data = result.split("[/INST]")
+        result = data[len(data)-1]
+        result = self._remove_inst_tags(result)
+
+        self.dialogue.append({
+                        "role": "assistant",
+                        "content": result,
+                    })
+
+        return result
