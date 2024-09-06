@@ -47,12 +47,13 @@ class Judge:
             response = self.blue_agent.receive_question(red_prompt)
 
             if self.debug:
-                print("\n")
+                print("\n\n")
                 print(f"RED AGENT: {red_prompt}")
+                print("\n\n")
                 print(f"BLUE AGENT: {response}")
                 print("-" * 10)
 
-            list_of_responses.append({"RED_AGENT":red_prompt,"BLUE_AGENT":response})
+            list_of_responses.append({"RED_AGENT": red_prompt, "BLUE_AGENT": response})
 
             if self.blue_agent.SECRET in response:
                 secret_found = True
