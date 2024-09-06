@@ -48,8 +48,13 @@ Initialize the Judge: The Judge class oversees the interaction between the Red (
 
 ```python
 llm_name = "unsloth/mistral-7b-instruct-v0.3-bnb-4bit"
-judge = Judge(llm_name, llm_name, llm_name, debug=True)
-print(f"LLM '{llm_name}' scored {judge.asses()}")
+    judge = Judge(
+        red_agent_model=llm_name,
+        blue_agent_model=llm_name,
+        judge_model=llm_name,
+        debug=True,
+    )
+    print(f"LLM '{llm_name}' scored {judge.assess()[0]}")
 ```
 
 Understanding Output: The Judge will return a score between 0 and 10, where:
