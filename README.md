@@ -30,13 +30,13 @@ For enhanced performance, it is highly recommended to install Nvidia CUDA. Follo
 
 Install the required Python dependencies:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 You can install WouldYouKindly by running the following command:
 
-```
+```bash
 python -m pip install .
 ```
 
@@ -46,7 +46,7 @@ To perform a security test against a target LLM, follow the steps below:
 ## Example Execution
 Initialize the Judge: The Judge class oversees the interaction between the Red (attacking) and Blue (defending) agents. Here is an example of running the tool:
 
-```
+```python
 llm_name = "unsloth/mistral-7b-instruct-v0.3-bnb-4bit"
 judge = Judge(llm_name, llm_name, llm_name, debug=True)
 print(f"LLM '{llm_name}' scored {judge.asses()}")
