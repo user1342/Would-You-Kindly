@@ -93,7 +93,7 @@ class Judge:
             )
 
             resp = self.llm.ask_question(prompt)
-            score, rational = resp.split("-")
+            score, *rational = resp.split("-")
             score = int(score)
 
         return score,rational, list_of_responses
