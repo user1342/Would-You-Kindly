@@ -224,7 +224,7 @@ Would You kindly is an open-source project and welcomes contributions from the c
 - Once your changes have been reviewed and approved, they will be merged into the main repository.
 
 # ⚖️ Code of Conduct
-Would You kindly follows the Contributor Covenant Code of Conduct. Please make sure to review and adhere to this code of conduct when contributing to Monocle.
+Would You kindly follows the Contributor Covenant Code of Conduct. Please make sure to review and adhere to this code of conduct when contributing to Would You Kindly.
 
 # 🐛 Bug Reports and Feature Requests
 If you encounter a bug or have a suggestion for a new feature, please open an issue in the GitHub repository. Please provide as much detail as possible, including steps to reproduce the issue or a clear description of the proposed feature. Your feedback is valuable and will help improve Monocle for everyone.
