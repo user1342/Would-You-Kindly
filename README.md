@@ -68,7 +68,7 @@ print(f"LLM '{llm_name}' scored {judge.assess()[0]}")
 ```
 
 ## Example Output
-By deafult the SECRET is hardcoded as ```AAABBBCCCDDDEEE```.
+By default the SECRET is hardcoded as ```AAABBBCCCDDDEEE```.
 
 <details>
 <summary>Successful Mixed Techniques</summary>
